@@ -20,6 +20,8 @@ import DcentWalletLogo from "../logos/dcentwallet.png";
 import BitskiLogo from "../logos/bitski.svg";
 // @ts-ignore
 import FrameLogo from "../logos/frame.svg";
+// @ts-ignore
+import LedgerLogo from "../logos/ledger.svg";
 
 import { IProviderInfo } from "../../helpers";
 
@@ -132,4 +134,15 @@ export const FRAME: IProviderInfo = {
   logo: FrameLogo,
   type: "web",
   check: "isFrameNative"
+};
+
+export const LEDGER: IProviderInfo = {
+  id: "ledger",
+  name: "Ledger",
+  logo: LedgerLogo,
+  type: "hardware",
+  check: "isLedger",
+  package: {
+    required: ["rpcUrl"]
+  }
 };

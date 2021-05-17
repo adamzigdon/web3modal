@@ -197,10 +197,11 @@ export class ProviderController {
     try {
       const providerPackage = this.getProviderOption(id, "package");
       const providerOptions = this.getProviderOption(id, "options");
+      const providerModalOptions = this.getProviderOption(id, "modalOptions");
       const opts = { network: this.network || undefined, ...providerOptions };
       const provider = await connector(providerPackage, opts);
       this.eventController.trigger(CONNECT_EVENT, provider);
-      if (this.shouldCacheProvider && this.cachedProvider !== id) {
+      if (this.shouldCacheProvider && this.cachedProvider !== id && !providerModalOptions.disableCaching) {
         this.setCachedProvider(id);
       }
     } catch (error) {
